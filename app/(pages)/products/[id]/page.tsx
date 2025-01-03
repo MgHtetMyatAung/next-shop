@@ -16,7 +16,7 @@ export async function generateMetadata({
   const id = (await params).id;
   const post = await getProductDetail(id);
   return {
-    title: post.title + "|" + AppData.title,
+    title: post.title + " | " + AppData.title,
     description: post.description,
   };
 }
