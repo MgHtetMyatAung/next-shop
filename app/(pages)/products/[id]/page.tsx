@@ -1,4 +1,5 @@
 import ImageGallery from "@/components/product/ImageGallery";
+import { AppData } from "@/constant/config";
 import { BaseUrl } from "@/services/api.config";
 import React from "react";
 
@@ -6,6 +7,19 @@ const getProductDetail = async (id: string) => {
   const res = await fetch(`${BaseUrl}/products/${id}`);
   return res.json();
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const id = (await params).id;
+  const post = await getProductDetail(id);
+  return {
+    title: post.title + "|" + AppData.title,
+    description: post.description,
+  };
+}
 
 export default async function ProductDetailPage({
   params,
