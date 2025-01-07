@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem";
 import SectionTitle from "../common/SectionTitle";
 
 const getProducts = async () => {
-  const res = await fetch(`${BaseUrl}/products?offset=0&limit=12`);
+  const res = await fetch(`${BaseUrl}/products?offset=0&limit=5`);
   const data = await res.json();
   return data;
 };
